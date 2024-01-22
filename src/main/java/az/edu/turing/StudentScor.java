@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class StudentScor {
     Scanner sc = new Scanner(System.in);
-    double grade = sc.nextInt();
+    double grade = sc.nextDouble();
     if(grade>0&&grade<51)
 
     {
