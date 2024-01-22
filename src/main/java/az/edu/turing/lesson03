@@ -1,0 +1,14 @@
+
+public class Main {
+    public static void main(String[] args) {
+    byte b1=4;
+    byte b2=(byte)129;
+
+    int i2=130;
+    int b2=i2;
+
+   System.out.println(i1);
+   System.out.println(b2);
+
+    }
+}
