@@ -1,4 +1,4 @@
-package az.edu.turing;
+package az.edu.turing.lesson06;
 
 public class MultiplicationApp {
     public static void main(String[] args) {

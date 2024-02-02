@@ -1,4 +1,4 @@
-package az.edu.turing;
+package az.edu.turing.lesson07;
 
 import java.util.Scanner;
 
@@ -25,7 +25,10 @@ public class SimpleDivisorApp {
                 System.out.print(i + " ");
             }
         }
+        System.out.println();
+        System.out.println("Simple divisors:");
+        }
     }
-}
+
 
 

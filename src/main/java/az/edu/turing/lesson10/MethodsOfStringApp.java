@@ -1,8 +1,6 @@
-package az.edu.turing;
-
+package az.edu.turing.lesson10;
 import java.util.Scanner;
-
-public class MethodsApp {
+public class MethodsOfStringApp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String sentence = sc.nextLine();
@@ -10,7 +8,5 @@ public class MethodsApp {
         System.out.println(sentence.toUpperCase());
         System.out.println(sentence.toLowerCase());
         System.out.println(sentence.trim());
-        System.out.println(sentence.charAt());
-        System.out.println(sentence.lastIndexOf());
     }
 }
