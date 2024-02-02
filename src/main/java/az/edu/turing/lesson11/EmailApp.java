@@ -20,4 +20,3 @@ public class EmailApp {
         return name.length();
     }
 }
-
