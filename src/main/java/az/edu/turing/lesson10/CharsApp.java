@@ -1,4 +1,4 @@
-ackage az.edu.turing.lesson10;
+package az.edu.turing.lesson10;
 public class CharsApp {
     public static void main(String[] args) {
         printChars(new char[]{'N', 'A', 'Z', 'R', 'I', 'N'});
