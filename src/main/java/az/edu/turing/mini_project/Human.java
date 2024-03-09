@@ -119,4 +119,22 @@ public class Human {
         System.out.println("Removing human: " + name + " " + surname);
         super.finalize();
     }
+     final class Woman extends Human{
+         @Override
+         public void greetPet() {
+             System.out.println("woman -----> Hello, " + family.getPet().getNickname());
+         }
+         public void makeUp(){
+             System.out.println("Woman doing make-up");
+         }
+     }
+    final class Man extends Human{
+        @Override
+        public void greetPet() {
+            System.out.println("man -----> Hello, " + family.getPet().getNickname());
+        }
+        public void repairCar(){
+            System.out.println("Man repairing car");
+        }
+    }
 }

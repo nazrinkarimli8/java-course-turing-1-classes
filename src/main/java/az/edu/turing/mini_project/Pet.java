@@ -3,7 +3,7 @@ package az.edu.turing.mini_project;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Pet {
+public abstract class Pet {
     private Species species;
     private String nickname;
     private int age;
@@ -11,13 +11,11 @@ public class Pet {
     private String[] habits;
 
     // Constructors
-    public Pet(Species species, String nickname) {
-        this.species = species;
+    public Pet(String nickname) {
         this.nickname = nickname;
     }
 
-    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
-        this.species = species;
+    public Pet(String nickname, int age, int trickLevel, String[] habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -29,6 +27,7 @@ public class Pet {
     }
 
     // Getters setters
+
     public Species getSpecies() {
         return species;
     }
@@ -74,14 +73,7 @@ public class Pet {
         System.out.println("I am eating.");
     }
 
-    public void respond() {
-        System.out.println("Hello, owner. I am- " + nickname + ". I miss you!");
-    }
-
-    public void foul() {
-
-        System.out.println("I need to cover it up.");
-    }
+    public abstract void respond();
 
     @Override
     public String toString() {
@@ -113,5 +105,50 @@ public class Pet {
     protected void finalize() throws Throwable {
         System.out.println("Removing pet: " + nickname);
         super.finalize();
+    }
+
+    class Fish extends Pet {
+        public Fish(String nickname, int age, int trickLevel, String[] habits) {
+            super(nickname, age, trickLevel, habits);
+        }
+
+        @Override
+        public void respond() {
+            System.out.println("I am swimming gracefully.");
+        }
+
+    }
+
+    static class Dog extends Pet {
+        public Dog(String nickname, int age, int trickLevel, String[] habits) {
+            super(nickname, age, trickLevel, habits);
+        }
+
+        @Override
+        public void respond() {
+            System.out.println("Hav-hav-hav");
+        }
+    }
+
+    static class DomesticCat extends Pet {
+        public DomesticCat(String nickname, int age, int trickLevel, String[] habits) {
+            super(nickname, age, trickLevel, habits);
+        }
+
+        @Override
+        public void respond() {
+            System.out.println("Meowwwwww");
+        }
+    }
+
+    static class RoboCat extends Pet {
+        public RoboCat(String nickname, int age, int trickLevel, String[] habits) {
+            super(nickname, age, trickLevel, habits);
+        }
+
+        @Override
+        public void respond() {
+            System.out.println("I am robo cat");
+        }
     }
 }

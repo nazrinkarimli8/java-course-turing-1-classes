@@ -9,10 +9,9 @@ public class Family {
     private Pet pet;
     private Human children[];
 
-    public Family(Human mother, Human father, Pet pet) {
+    public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = mother;
-        this.pet = pet;
         this.children = new Human[0];
     }
 
@@ -103,6 +102,7 @@ public class Family {
                 ", children=" + Arrays.toString(children) +
                 '}';
     }
+
     @Override
     public void finalize() throws Throwable {
         System.out.println("Removing family: " + mother.getName() + " and " + father.getName());
