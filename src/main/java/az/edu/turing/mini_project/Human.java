@@ -1,14 +1,15 @@
 package az.edu.turing.mini_project;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Human {
     private String name;
     private String surname;
     private int year;
     private int iq;
-    public Pet pet;
-    private Human mother;
-    private Human father;
-    private String[][] schedule;
+    private DayOfWeek schedule;
+    private Family family;
 
     // Constructors
     public Human(String name, String surname, int year) {
@@ -17,22 +18,11 @@ public class Human {
         this.year = year;
     }
 
-    public Human(String name, String surname, int year, Human mother, Human father) {
-        this.name = name;
-        this.surname = surname;
-        this.year = year;
-        this.mother = mother;
-        this.father = father;
-    }
-
-    public Human(String name, String surname, int year, int iq, Pet pet, Human mother, Human father, String[][] schedule) {
+    public Human(String name, String surname, int year, int iq, DayOfWeek schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.iq = iq;
-        this.pet = pet;
-        this.mother = mother;
-        this.father = father;
         this.schedule = schedule;
     }
 
@@ -72,50 +62,61 @@ public class Human {
         this.iq = iq;
     }
 
-    public Pet getPet() {
-        return pet;
-    }
-
-    public void setPet(Pet pet) {
-        this.pet = pet;
-    }
-
-    public Human getMother() {
-        return mother;
-    }
-
-    public void setMother(Human mother) {
-        this.mother = mother;
-    }
-
-    public Human getFather() {
-        return father;
-    }
-
-    public void setFather(Human father) {
-        this.father = father;
-    }
-
-    public String[][] getSchedule() {
+    public DayOfWeek getSchedule() {
         return schedule;
     }
 
-    public void setSchedule(String[][] schedule) {
+    public void setSchedule(DayOfWeek schedule) {
         this.schedule = schedule;
     }
 
-    // Methods
+    public Family getFamily() {
+        return family;
+    }
+
+    public void setFamily(Family family) {
+        this.family = family;
+    }
+
     public void greetPet() {
-        System.out.println("Hello, " + pet.getNickname());
+        System.out.println("Hello, " + family.getPet().getNickname());
     }
 
     public void describePet() {
-        String slyLevel = (pet.getTrickLevel() > 50) ? "very sly" : "almost not sly";
-        System.out.println("I have an " + pet.getSpecies() + " is " + pet.getAge() + " years old, he is " + slyLevel);
+        String slyLevel = (family.getPet().getTrickLevel() > 50) ? "very sly" : "almost not sly";
+        System.out.println("I have an " + family.getPet().getSpecies() + " is " + family.getPet().getAge() + " years old, he is " + slyLevel);
     }
+
 
     @Override
     public String toString() {
-        return "Human{name='" + name + "', surname='" + surname + "', year=" + year + ", iq=" + iq + ", mother=" + mother.getName() + " " + mother.getSurname() + ", father=" + father.getName() + " " + father.getSurname() + ", pet=" + pet.toString() + "}";
+        return "Human{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", year=" + year +
+                ", iq=" + iq +
+                ", schedule=" + Arrays.toString(new DayOfWeek[]{schedule}) +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Human human = (Human) o;
+        return year == human.year && iq == human.iq && Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Arrays.equals(new DayOfWeek[]{schedule}, new DayOfWeek[]{human.schedule}) && Objects.equals(family, human.family);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name, surname, year, iq, family);
+        result = 31 * result + Arrays.hashCode(new DayOfWeek[]{schedule});
+        return result;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Removing human: " + name + " " + surname);
+        super.finalize();
     }
 }
