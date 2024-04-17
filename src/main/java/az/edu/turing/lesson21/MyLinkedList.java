@@ -102,3 +102,4 @@ public class MyLinkedList<E> {
         System.out.println("Size after deletion by value: " + list.getSize());
     }
 }
+
