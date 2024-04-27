@@ -2,13 +2,15 @@ package az.edu.turing.mini_project;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.*;
 
 public class Human {
     private String name;
     private String surname;
     private int year;
     private int iq;
-    private DayOfWeek schedule;
+    private Map<String,String> schedule;
+    // private DayOfWeek schedule;
     private Family family;
 
     // Constructors
@@ -23,7 +25,7 @@ public class Human {
         this.surname = surname;
         this.year = year;
         this.iq = iq;
-        this.schedule = schedule;
+        this.schedule = new HashMap<>();
     }
 
     public Human() {
@@ -62,11 +64,11 @@ public class Human {
         this.iq = iq;
     }
 
-    public DayOfWeek getSchedule() {
+    public Map<String,String> getSchedule() {
         return schedule;
     }
 
-    public void setSchedule(DayOfWeek schedule) {
+    public void setSchedule(Map<String,String> schedule) {
         this.schedule = schedule;
     }
 
@@ -95,7 +97,8 @@ public class Human {
                 ", surname='" + surname + '\'' +
                 ", year=" + year +
                 ", iq=" + iq +
-                ", schedule=" + Arrays.toString(new DayOfWeek[]{schedule}) +
+                ", schedule=" + schedule +
+                ", family=" + family +
                 '}';
     }
 
@@ -104,22 +107,50 @@ public class Human {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Human human = (Human) o;
-        return year == human.year && iq == human.iq && Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Arrays.equals(new DayOfWeek[]{schedule}, new DayOfWeek[]{human.schedule}) && Objects.equals(family, human.family);
+        return year == human.year && iq == human.iq && Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Objects.equals(schedule, human.schedule) && Objects.equals(family, human.family);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(name, surname, year, iq, family);
-        result = 31 * result + Arrays.hashCode(new DayOfWeek[]{schedule});
-        return result;
+        return Objects.hash(name, surname, year, iq, schedule, family);
     }
+
+
+//    public String toString() {
+//        return "Human{" +
+//                "name='" + name + '\'' +
+//                ", surname='" + surname + '\'' +
+//                ", year=" + year +
+//                ", iq=" + iq +
+//                ", schedule=" + Arrays.toString(new DayOfWeek[]{schedule}) +
+//                '}';
+//
+
+
+
+
+
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Human human = (Human) o;
+//        return year == human.year && iq == human.iq && Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Arrays.equals(new DayOfWeek[]{schedule}, new DayOfWeek[]{human.schedule}) && Objects.equals(family, human.family);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = Objects.hash(name, surname, year, iq, family);
+//        result = 31 * result + Arrays.hashCode(new DayOfWeek[]{schedule});
+//        return result;
+//    }
+
 
     @Override
     protected void finalize() throws Throwable {
-        System.out.println("Removing human: " + name + " " + surname);
         super.finalize();
     }
-     final class Woman extends Human{
+
+    final class Woman extends Human{
          @Override
          public void greetPet() {
              System.out.println("woman -----> Hello, " + family.getPet().getNickname());
@@ -133,6 +164,7 @@ public class Human {
         public void greetPet() {
             System.out.println("man -----> Hello, " + family.getPet().getNickname());
         }
+
         public void repairCar(){
             System.out.println("Man repairing car");
         }

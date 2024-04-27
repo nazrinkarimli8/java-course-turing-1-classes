@@ -5,9 +5,10 @@ public class HappyFamilyApp {
 
         Human mother = new Human("Jane", "Karleone", 1940, 88, DayOfWeek.MONDAY);
         Human father = new Human("Vito", "Karleone", 1950, 87, DayOfWeek.SUNDAY);
-        // Pet pet = new Pet("Rock", 5, 75, new String[]{"eat", "drink", "sleep"});
-        Pet.Dog dog1 = new Pet.Dog("Rock", 5, 75, new String[]{"eat", "drink", "sleep"});
-        Family family = new Family(mother, father);
+        Pet pet1 = new Dog("Rock", 5, 75, new String[]{"eat", "drink", "sleep"});
+
+        Family family = new Family(mother, father,pet1);
+
 
         Human child1 = new Human("Michael", "Karleone", 1977, 86, DayOfWeek.SATURDAY);
         family.addChild(child1);
