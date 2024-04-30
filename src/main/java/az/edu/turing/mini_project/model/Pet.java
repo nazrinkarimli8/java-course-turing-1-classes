@@ -1,6 +1,5 @@
-package az.edu.turing.mini_project;
+package az.edu.turing.mini_project.model;
 
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.*;
 public abstract class Pet {
@@ -11,11 +10,13 @@ public abstract class Pet {
     private Set<String> habits;
 
     // Constructors
-    public Pet(String nickname) {
+    public Pet(Species species, String nickname) {
         this.nickname = nickname;
+        this.species = species;
     }
 
-    public Pet(String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(Species species,String nickname, int age, int trickLevel, Set<String> habits) {
+        this.species = species;
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -60,11 +61,11 @@ public abstract class Pet {
         this.trickLevel = trickLevel;
     }
 
-    public String[] getHabits() {
+    public Set<String> getHabits() {
         return habits;
     }
 
-    public void setHabits(String[] habits) {
+    public void setHabits(Set<String> habits) {
         this.habits = habits;
     }
 
@@ -75,6 +76,7 @@ public abstract class Pet {
 
     public abstract void respond();
 
+    // toString  equals  hashCode
     @Override
     public String toString() {
         return "Pet{" +
@@ -82,7 +84,7 @@ public abstract class Pet {
                 ", nickname='" + nickname + '\'' +
                 ", age=" + age +
                 ", trickLevel=" + trickLevel +
-                ", habits=" + Arrays.toString(habits) +
+                ", habits=" + habits +
                 '}';
     }
 
@@ -91,19 +93,16 @@ public abstract class Pet {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
-        return age == pet.age && trickLevel == pet.trickLevel && species == pet.species && Objects.equals(nickname, pet.nickname) && Arrays.equals(habits, pet.habits);
+        return age == pet.age && trickLevel == pet.trickLevel && species == pet.species && Objects.equals(nickname, pet.nickname) && Objects.equals(habits, pet.habits);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(species, nickname, age, trickLevel);
-        result = 31 * result + Arrays.hashCode(habits);
-        return result;
+        return Objects.hash(species, nickname, age, trickLevel, habits);
     }
 
     @Override
     protected void finalize() throws Throwable {
-        System.out.println("Removing pet: " + nickname);
         super.finalize();
     }
 }

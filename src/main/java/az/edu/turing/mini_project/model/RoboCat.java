@@ -1,6 +1,8 @@
-package az.edu.turing.mini_project;
+package az.edu.turing.mini_project.model;
 
-    public class RoboCat extends Pet {
+import az.edu.turing.mini_project.model.Pet;
+
+public class RoboCat extends Pet {
         public RoboCat(String nickname, int age, int trickLevel, String[] habits) {
             super(nickname, age, trickLevel, habits);
         }

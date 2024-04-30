@@ -1,6 +1,6 @@
-package az.edu.turing.mini_project;
+package az.edu.turing.mini_project.model;
 
-    public class DomesticCat  extends Pet implements Fouling{
+public class DomesticCat  extends Pet implements Fouling {
         public DomesticCat(String nickname, int age, int trickLevel, String[] habits) {
             super(nickname, age, trickLevel, habits);
         }
